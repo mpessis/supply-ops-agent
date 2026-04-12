@@ -14,6 +14,10 @@ This MCP server exposes five diagnostic tools that help sell-side ad ops teams i
 | `analyze_demand` | Per-DSP demand trends, identifies buyer pullbacks and timing |
 | `partner_health` | Composite health score combining all four signal dimensions |
 
+## Demo
+
+![Claude autonomously calls 5 diagnostic tools to investigate a bid rate drop for Partner Bravo.](screenshots/demo-bravo-diagnosis.png)
+
 ## Baked-in incidents
 
 The mock data includes three realistic scenarios for testing:
