@@ -18,6 +18,14 @@ This MCP server exposes five diagnostic tools that help sell-side ad ops teams i
 
 ![Claude autonomously calls 5 diagnostic tools to investigate a bid rate drop for Partner Bravo.](screenshots/demo-bravo-diagnosis.png)
 
+## Architecture
+
+This is an **MCP tool server** — it exposes diagnostic capabilities (data retrieval and analysis) but does not orchestrate them. The **LLM** (Claude, GPT, or any MCP-compatible client) decides which tools to call, interprets results, and generates the diagnosis. Separating the intelligence layer from the data layer makes the server interoperable with any AAMP-compatible agent.
+
+```
+LLM (Claude) → MCP protocol → supply-ops-agent → mock data
+```
+
 ## Baked-in incidents
 
 The mock data includes three realistic scenarios for testing:
