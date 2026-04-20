@@ -20,19 +20,23 @@ This MCP server exposes five diagnostic tools that help sell-side ad ops teams i
 
 ## Architecture
 
-This is an **MCP tool server** — it exposes diagnostic capabilities (data retrieval and analysis) but does not orchestrate them. The **LLM** (Claude, GPT, or any MCP-compatible client) decides which tools to call, interprets results, and generates the diagnosis. Separating the intelligence layer from the data layer makes the server interoperable with any AAMP-compatible agent.
+This is an **MCP tool server** - it exposes diagnostic capabilities (data retrieval and analysis) but does not orchestrate them. The **LLM** (Claude, GPT, or any MCP-compatible client) decides which tools to call, interprets results, and generates the diagnosis. Separating the intelligence layer from the data layer makes the server interoperable with any AAMP-compatible agent.
 
 ```
 LLM (Claude) → MCP protocol → supply-ops-agent → mock data
 ```
 
+See also the IAB Tech Lab [Seller Agent SDK](https://github.com/IABTechLab/seller-agent) for the reference supply-side agent implementation that this project complements.
+
+Diagnostic logic is grounded in operational patterns from SSP exchange ops: bid stream anomalies, sellers.json reconciliation, and IVT taxonomy aligned with HUMAN/TAG standards.
+
 ## Baked-in incidents
 
 The mock data includes three realistic scenarios for testing:
 
-1. **Partner Bravo** — Bid rate drops 40% on day 5, caused by undeclared seller IDs in ads.txt
-2. **Partner Delta** — SIVT spikes to 18% on days 10-12, then returns to baseline
-3. **Partner Foxtrot** — Two major DSP buyers pull back spend starting day 8
+1. **Partner Bravo** - Bid rate drops 40% on day 5, caused by undeclared seller IDs in ads.txt
+2. **Partner Delta** - SIVT spikes to 18% on days 10-12, then returns to baseline
+3. **Partner Foxtrot** - Two major DSP buyers pull back spend starting day 8
 
 ## Setup
 
